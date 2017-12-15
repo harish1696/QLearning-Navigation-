@@ -32,6 +32,10 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+#ifndef INCLUDE_QLEARN_HPP_
+#define INCLUDE_QLEARN_HPP_
+
 /**
  *  @file    Qlearn.hpp
  *  @author  Harish Sampathkumar
@@ -47,25 +51,27 @@
  *  given state and action and choose the best action
  *  for the resultant state.
  */
-
-#pragma once
-
 #include <iostream>
 #include <vector>
 
 class Qlearn {
  public:
- /**
+/**
  * @brief  Constructs a object
  */
   Qlearn(float e, float a, float d);
+
+/**
+ * @brief Overloaded Constructor for loading trained Qtable
+ */
   explicit Qlearn(std::vector<std::vector<double>> Qin);
- /**
+
+/**
  * @brief Destroys a object
  */
   ~Qlearn();
 
- /**
+/**
  * @brief Finds the action that the bot can perform
  * @param current state of the robot
  * @return action
@@ -73,14 +79,14 @@ class Qlearn {
   int chooseAction(int state);
 
 
- /**
+/**
  * @brief Fetches the best possible action for the resultant state
  * @param resultant state of the turtlebot after a action is performed
  * @return action
  */ 
   int chooseNextAct(int nextstate);
 
- /**
+/**
  * @brief Updates the Qvalue
  * @param current state of the robot, action performed, 
  * resultant state of the robot and the reward for the 
@@ -92,13 +98,15 @@ class Qlearn {
   double epsilon;
   double alpha;
   double discount;
-  std::vector<std::vector<double>> Q;
+  std::vector<std::vector<double>> Q; //Qtable
 
  private:
- /**
+/**
  * @brief Fetches the Qvalue for given state and action
  * @param current state of the robot, action performed, 
  * @return Qvalue
  */ 
   double getQvalue(int state, int action);
 };
+
+#endif  // INCLUDE_QLEARN_HPP_

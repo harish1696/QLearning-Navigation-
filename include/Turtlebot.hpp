@@ -32,6 +32,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef INCLUDE_TURTLEBOT_HPP_
+#define INCLUDE_TURTLEBOT_HPP_
+
 /**
  *  @file    Turtlebot.hpp
  *  @author  Harish Sampathkumar
@@ -47,25 +50,62 @@
  *  action in the envirinment.
  *  
  */
-#pragma once
-
 #include <iostream>
 #include <vector>
 #include "ros/ros.h"
 
 class Turtlebot {
  public:
+/**
+ * @brief  Constructs a object
+ */
   Turtlebot();
+
+/**
+ * @brief Destroys a object
+ */
   ~Turtlebot();
+
+/**
+ * @brief Callback function for topic /scan
+ * @param LaserScan data
+ * @return none
+ */
   void getSensorData(const sensor_msgs::LaserScan::ConstPtr& msg);
+
+/**
+ * @brief Publishes velocity to the robot 
+ * @param action to be performed
+ * @return none
+ */
   void publishVelocity(int action);
+
+/**
+ * @brief obtains the state of the robot
+ * @param none
+ * @return state in vector form
+ */
   std::vector<int> getQstate();
+
+/**
+ * @brief checks if the robot crashes
+ * @param none
+ * @return true if robot crashes, otherwise false
+ */
   bool isDone();
+
+/**
+ * @brief sets the Done variable to False
+ * @param none
+ * @return none
+ */
   void setDone();
 
  private:
-  std::vector<int> state;
-  bool done;
-  ros::NodeHandle n;
-  ros::Publisher velocity;
+  std::vector<int> state; // holds state of the robot
+  bool done; // true if robot crashes else false
+  ros::NodeHandle n; 
+  ros::Publisher velocity; // publish velocity to robot
 };
+
+#endif  // INCLUDE_TURTLEBOT_HPP_

@@ -32,6 +32,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef INCLUDE_QTABLE_HPP_
+#define INCLUDE_QTABLE_HPP_
+
 /**
  *  @file    Qtable.hpp
  *  @author  Harish Sampathkumar
@@ -47,18 +50,37 @@
  *  by the turtlebot in other unknown environments.
  *  
  */
-#pragma once
-
 #include <iostream>
 #include <vector>
 
 class Qtable {
  public:
+/**
+ * @brief  Constructs a object
+ */
   Qtable();
+
+/**
+ * @brief Destroys a object
+ */
   ~Qtable();
+
+/**
+ * @brief Converts state from vector form to integer
+ * @param Current state of the robot
+ * @return Integer equivalent
+ */
   int vecToint(std::vector<int> state);
+
+/**
+ * @brief Stores the trained Qtable in .csv format
+ * @param Qtable
+ * @return none
+ */
   void convertTocsv(std::vector<std::vector<double>> Q);
 
  private:
-  int index;
+  int index; // index of a state
 };
+
+#endif  // INCLUDE_QTABLE_HPP_

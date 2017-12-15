@@ -32,6 +32,9 @@
  * THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifndef INCLUDE_ENVIRONMENT_HPP_
+#define INCLUDE_ENVIRONMENT_HPP_
+
 /**
  *  @file    Environment.hpp
  *  @author  Harish Sampathkumar
@@ -46,9 +49,6 @@
  *  find the state of turtlebot and use it to make the
  *  turtlebot learn eventually
  */
-
-#pragma once
-
 #include <iostream>
 #include <vector>
 #include "ros/ros.h"
@@ -56,17 +56,44 @@
 
 class Environment {
  public:
+/**
+  * @brief  Constructs a object
+  */
   Environment();
+
+/**
+ * @brief Destroys a object
+ */
   ~Environment();
+
+/**
+ * @brief Resets the simulation each time robot crashes
+ * @param none
+ * @return initial state of the robot after it respawns
+ */
   std::vector<int> resetEnvironment();
+
+/**
+ * @brief Performs the chosen action on the robot 
+ * @param action to be performed
+ * @return  state of the robot after it performs action
+ */
   std::vector<int> performAct(int action);
+
+/**
+ * @brief Finds the reward for the performed act
+ * @param action performed
+ * @return reward obtained
+ */
   int rewardAct(int action);
 
-  Turtlebot learnerBot;
-  std::vector<int> currState;
-  std::vector<int> nextState;
+  Turtlebot learnerBot; // robot in the environemnt
+  std::vector<int> currState; // state of the robot before action
+  std::vector<int> nextState; // state of the robot after action
 
  private:
   ros::NodeHandle n;
-  ros::Subscriber botSensor;
+  ros::Subscriber botSensor; // collects the scan data
 };
+
+#endif  // INCLUDE_ENVIRONMENT_HPP_
