@@ -1,0 +1,18 @@
+<launch>
+    <env
+        name="ROSCONSOLE_CONFIG_FILE"
+        value="$(find QLearning-Navigation-)/config/logger_level.conf"
+    />
+   
+    <include file="$(find turtlebot_gazebo)/launch/turtlebot_world.launch">
+        <arg name="world_file" value="$(find QLearning-Navigation-)/world/circuit2world"/>
+        <arg name="gui" value="false"/>
+    </include>
+
+    <node
+        pkg="QLearning-Navigation-"
+        name="learner"
+        type="learner"
+        output="screen"
+    />
+</launch>
