@@ -49,20 +49,24 @@
 
 #pragma once
 
-#include<iostream>
-
-using namespace std;
+#include <iostream>
+#include <vector>
+#include "ros/ros.h"
+#include "Turtlebot.hpp"
 
 class Environment {
-public:
+ public:
   Environment();
   ~Environment();
-  void resetEnvironment();
-  vector<int> getQstate();
-  void learn();
+  std::vector<int> resetEnvironment();
+  std::vector<int> performAct(int action);
+  int rewardAct(int action);
 
-  vector<int> currState;
-  vector<int> nextState;
-  int action;
-  int reward;
+  Turtlebot learnerBot;
+  std::vector<int> currState;
+  std::vector<int> nextState;
+
+ private:
+  ros::NodeHandle n;
+  ros::Subscriber botSensor;
 };

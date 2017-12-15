@@ -49,16 +49,23 @@
  */
 #pragma once
 
-#include<iostream>
-
-using namespace std;
+#include <iostream>
+#include <vector>
+#include "ros/ros.h"
 
 class Turtlebot {
-public:
+ public:
   Turtlebot();
   ~Turtlebot();
-  void performAct(int action);
-  
-  sensor_msgs/LaserScan scanData;
-  int divideRange;
+  void getSensorData(const sensor_msgs::LaserScan::ConstPtr& msg);
+  void publishVelocity(int action);
+  std::vector<int> getQstate();
+  bool isDone();
+  void setDone();
+
+ private:
+  std::vector<int> state;
+  bool done;
+  ros::NodeHandle n;
+  ros::Publisher velocity;
 };

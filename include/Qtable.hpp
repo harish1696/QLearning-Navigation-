@@ -49,18 +49,16 @@
  */
 #pragma once
 
-#include<iostream>
-
-using namespace std;
+#include <iostream>
+#include <vector>
 
 class Qtable {
-public:
+ public:
   Qtable();
   ~Qtable();
-  void vecTointState(vector<int>state);
-  void convertTocsv();
+  int vecToint(std::vector<int> state);
+  void convertTocsv(std::vector<std::vector<double>> Q);
 
-private:
-  vector<int> state;
-  vector<int> act;
+ private:
+  int index;
 };

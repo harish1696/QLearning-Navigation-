@@ -50,54 +50,55 @@
 
 #pragma once
 
-#include<iostream>
-
-using namespace std;
+#include <iostream>
+#include <vector>
 
 class Qlearn {
-public:
-/**
+ public:
+ /**
  * @brief  Constructs a object
  */
-  Qlearn();
-
-/**
+  Qlearn(float e, float a, float d);
+  explicit Qlearn(std::vector<std::vector<double>> Qin);
+ /**
  * @brief Destroys a object
  */
   ~Qlearn();
 
-/**
+ /**
  * @brief Finds the action that the bot can perform
  * @param current state of the robot
  * @return action
  */
-  int chooseAction(vector<int>state);
+  int chooseAction(int state);
 
-/**
+
+ /**
+ * @brief Fetches the best possible action for the resultant state
+ * @param resultant state of the turtlebot after a action is performed
+ * @return action
+ */ 
+  int chooseNextAct(int nextstate);
+
+ /**
  * @brief Updates the Qvalue
  * @param current state of the robot, action performed, 
  * resultant state of the robot and the reward for the 
  * action taken
  * @return none
  */  
-  void updateQvalue(vector<int> currstate, int action,vector<int> nextstate, int reward);
-
-private:
-/**
- * @brief Fetches the Qvalue for given state and action
- * @param current state of the robot, action performed, 
- * @return Qvalue
- */ 
-  double getQvalue(vector<int> state, int action);
-
-/**
- * @brief Fetches the best possible action for the resultant state
- * @param resultant state of the turtlebot after a action is performed
- * @return action
- */ 
-  int chooseNextAct(vector<int> nextstate);
+  void updateQvalue(int currstate, int action, int nextstate, int reward);
 
   double epsilon;
   double alpha;
   double discount;
+  std::vector<std::vector<double>> Q;
+
+ private:
+ /**
+ * @brief Fetches the Qvalue for given state and action
+ * @param current state of the robot, action performed, 
+ * @return Qvalue
+ */ 
+  double getQvalue(int state, int action);
 };
