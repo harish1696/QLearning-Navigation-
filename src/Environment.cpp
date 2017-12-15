@@ -33,91 +33,86 @@
  */
 
 /**
- *  @file    Qlearn.cpp
+ *  @file    Environment.hpp
  *  @author  Harish Sampathkumar
  *  @copyright BSD License
  *
- *  @brief Implementing class Qlearn
+ *  @brief Implementing class Environment
  *
  *  @section DESCRIPTION
  *
- *   
- *  Implements class Qlearn which is used to choose action of
- *  the turtlebot, update the Qtable, get Qvalue for 
- *  given state and action and choose the best action
- *  for the resultant state.
- *  
+ *  Defines the data variables and data members of  
+ *  class Environment which is used to reset simulation,
+ *  find the state of turtlebot and use it to make the
+ *  turtlebot learn eventually
  */
 
-#include <ros/ros.h>
-#include <random>
+#include <sensor_msgs/LaserScan.h>
+#include <cmath>
 #include <vector>
-#include "Qlearn.hpp"
+#include "ros/ros.h"
+#include "std_srvs/Empty.h"
+#include "geometry_msgs/Twist.h"
+#include "Turtlebot.hpp"
+#include "Environment.hpp"
 
 // Constructs a object
-Qlearn::Qlearn(float e, float a, float d) {
-  epsilon = e;
-  alpha = a;
-  discount = d;
-  for (int i = 0; i < 1296; i++) {
-    std::vector<double> temp(3, 0.0);
-    Q.push_back(temp);
-  }
-}
-
-Qlearn::Qlearn(std::vector<std::vector<double>> Qin) {
-  epsilon = 0.0;
-  alpha = 0.0;
-  discount = 0.0;
-  Q = Qin;
+Environment::Environment() {
+  botSensor = n.subscribe<sensor_msgs::
+          LaserScan>("/scan", 50, &Turtlebot::getSensorData, &learnerBot);
 }
 
 // Destroys a object
-Qlearn::~Qlearn() {}
+Environment::~Environment() {}
 
-int Qlearn::chooseAction(int state) {
-  std::default_random_engine eng((std::random_device())());
-  std::uniform_real_distribution<double> ddis(0, 1.0);
-  std::uniform_int_distribution<int> idis(0, 2);
-  float e = ddis(eng);
+std::vector<int> Environment::resetEnvironment() {
+  learnerBot.setDone();
 
-  if (e < epsilon) {
-    int act =  idis(eng);
-    return act;
+  std_srvs::Empty reset, pause, unpause;
+
+  ros::service::call("/gazebo/reset_world", reset);
+
+  ros::service::call("/gazebo/unpause_physics", unpause);
+
+  auto data = ros::topic::waitForMessage<sensor_msgs::LaserScan>
+              ("/scan", n, ros::Duration(10));
+
+  ros::service::call("/gazebo/pause_physics", pause);
+
+  std::vector<int> state = learnerBot.getQstate();
+
+  return state;
+}
+
+std::vector<int> Environment::performAct(int action) {
+  std_srvs::Empty pause, unpause;
+
+  ros::service::call("/gazebo/unpause_physics", unpause);
+
+  learnerBot.publishVelocity(action);
+
+  auto data = ros::topic::waitForMessage<sensor_msgs::LaserScan>
+              ("/scan", n, ros::Duration(10));
+
+  ros::service::call("/gazebo/pause_physics", pause);
+
+  std::vector<int> state = learnerBot.getQstate();
+
+  return state;
+}
+
+int Environment::rewardAct(int action) {
+  int reward;
+  if (learnerBot.isDone() == false) {
+    if (action == 0) {
+      reward = 5;
+    } else {
+      reward = 1;
+    }
   } else {
-    int act = 0;
-    int temp = Q[state][0];
-    for (int i = 1; i < 2; i++) {
-      if (temp < Q[state][i]) {
-        act = i;
-      }
-    }
-    return act;
+      reward = -200;
   }
+  return reward;
 }
 
-void Qlearn::updateQvalue(int currState, int action,
-              int nextState, int reward) {
-  double Qcurr = getQvalue(currState, action);
-  int nextAction = chooseNextAct(nextState);
-  double Qnext = getQvalue(nextState, nextAction);
 
-  double change = alpha * (reward + discount * Qnext - Qcurr);
-  Q[currState][action] += change;
-}
-
-double Qlearn::getQvalue(int state, int action) {
-  double Qvalue = Q[state][action];
-  return Qvalue;
-}
-
-int Qlearn::chooseNextAct(int nextState) {
-  int act = 0;
-  double temp = Q[nextState][0];
-  for (int i = 1; i < 2; i++) {
-    if (temp < Q[nextState][i]) {
-      act = i;
-    }
-  }
-  return act;
-}
