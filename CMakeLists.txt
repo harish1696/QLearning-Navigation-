@@ -25,11 +25,37 @@ catkin_package()
 # Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_executable(Learner src/Learn.cpp src/Qlearn.cpp src/Qtable.cpp src/Turtlebot.cpp src/Environment.cpp)
-target_link_libraries(Learner ${catkin_LIBRARIES})
+add_executable(learner src/Learn.cpp src/Qlearn.cpp src/Qtable.cpp src/Turtlebot.cpp src/Environment.cpp)
+target_link_libraries(learner ${catkin_LIBRARIES})
 
-add_executable(Tester src/Test.cpp)
-target_link_libraries(Tester ${catkin_LIBRARIES})
+add_executable(testrun src/Test.cpp src/Qlearn.cpp src/Qtable.cpp src/Turtlebot.cpp src/Environment.cpp)
+target_link_libraries(testrun ${catkin_LIBRARIES})
 
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
 
+  add_rostest_gtest(
+    testQLearnNav
+    test/testQLearnNav.launch
+    test/main.cpp
+    test/testQlearn.cpp
+    test/testQtable.cpp
+    test/testEnvironment.cpp
+    test/testTurtlebot.cpp
+    src/Turtlebot.cpp 
+    src/Environment.cpp 
+    src/Qlearn.cpp
+    src/Qtable.cpp
+  )
 
+  target_link_libraries(
+    testQLearnNav
+    ${catkin_LIBRARIES}
+  )
+
+  add_dependencies(
+    testQLearnNav
+    learner
+    ${catkin_EXPORTED_TARGETS}
+  )
+endif()
