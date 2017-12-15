@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="QLearning-Navigation-" name="learner"  type="learner" />
+  <test pkg="QLearning-Navigation-" test-name="testQLearnNav" type="testQLearnNav" />
+</launch>
