@@ -48,12 +48,80 @@ SIP Process is followed to develop the module. It is detailed in this [link](htt
 The sprint planning notes can be accesed in this [link](https://docs.google.com/document/d/1guVZCdS4A_2YL14LjqNll8VrVJQzgvoqjZ6OoDONSNw/edit).
 
 ## Installing Dependencies
+This program works on a device running Ubuntu 16.04 and ROS Kinetic Kame.
 
+To install ROS Kinetic Kame in Ubuntu 16.04, follow the steps in this [link](http://wiki.ros.org/kinetic/Installation/Ubuntu).
+
+To install catkin, follow the installation steps in this [link](http://wiki.ros.org/catkin).
+
+To install turtlebot_gazebo package can be installed using the following command.
+
+```
+sudo apt-get install ros-kinetic-turtlebot-gazebo ros-kinetic-turtlebot-apps ros-kinetic-turtlebot-rviz-launchers
+```
 ## How to build
+Open a terminal window and run the following commands
+
+```
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+cd src
+git clone https://github.com/harish1696/QLearning-Navigation-
+cd ..
+catkin_make
+```
 
 ## How to run demo
 
-## How to run tests
+Open a terminal window and run the following command to launch the learner node
 
+```
+roslaunch QLearning-Navigation- learner.launch
+```
+To test it in a new environment
+
+```
+roslaunch QLearning-Navigation-testrun.launch
+```
+## How to record bag files with launch command
+The following command can be used to generate a rosbag file in the Results directory with launch command
+
+```
+roslaunch QLearning-Navigation- learner.launch record:=enable
+```
+
+The generated bag file contains recorded messages published to all topics which can be played back later.
+
+## How to inspect rosbag file
+To get more information about the generated rosbag file, go to the Results directory and run the following command
+
+```
+rosbag info pub.bag
+```
+
+## How to play a rosbag file while listener node is running 
+The generated rosbag file can also be used to play the recorded messages in all topics. 
+
+```
+rosbag play pub.bag
+```
+ 
+## How to run tests
+To run the tests implemented using gtest and rostest for the first time, run the following command
+
+```
+catkin_make run_tests
+```
+
+Later, the following command can be used to run the tests
+
+```
+source devel/setup.bash
+rostest Qlearning-Navigation- testQlearnNav.launch
+```
 ## Known Issues
+In training phase, if you prematurely close the program, press Ctrl+C and you will displayed some random numbers. Should be fixed.
+Also, the real time factor affects the performance the turtlebot both in training and testing phase.
 
