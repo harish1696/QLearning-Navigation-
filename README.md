@@ -47,6 +47,9 @@ SIP Process is followed to develop the module. It is detailed in this [link](htt
 ## Sprint Planning
 The sprint planning notes can be accesed in this [link](https://docs.google.com/document/d/1guVZCdS4A_2YL14LjqNll8VrVJQzgvoqjZ6OoDONSNw/edit).
 
+## Youtube Video
+Presentation of the project can be found in this [link](https://youtu.be/WA5o0XrypwI)
+
 ## Installing Dependencies
 This program works on a device running Ubuntu 16.04 and ROS Kinetic Kame.
 
