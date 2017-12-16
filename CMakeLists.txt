@@ -33,6 +33,7 @@ target_link_libraries(testrun ${catkin_LIBRARIES})
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0 --coverage")
 
   add_rostest_gtest(
     testQLearnNav
