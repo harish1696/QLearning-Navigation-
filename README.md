@@ -7,39 +7,7 @@
 The module will be able to train a robot to navigate autonomously in a completely unknown environment by avoiding obstacles using Q-learning technique. A model world will be simulated in Gazebo and the robot will be allowed to navigate in it without any knowledge about the world. A positive reward is given to states clear of obstacles while negative reward is given to states that is proportional to the proximity of an obstacle. The robot is allowed to navigate the world repeatedly until Q value table is updated to achieve an optimal policy. With the help of the Q table generated, the robot can navigate in any other random world/environment by avoiding obstacles.
 
 ## License
-BSD License
-
-Copyright (c) 2017 Harish Sampathkumar
-
-```
-Redistribution and use in source and binary forms, with or without  
-modification, are permitted provided that the following conditions are 
-met:
- 
-1. Redistributions of source code must retain the above copyright notice, 
-this list of conditions and the following disclaimer.
- 
-2. Redistributions in binary form must reproduce the above copyright 
-notice, this list of conditions and the following disclaimer in the   
-documentation and/or other materials provided with the distribution.
- 
-3. Neither the name of the copyright holder nor the names of its 
-contributors may be used to endorse or promote products derived from this 
-software without specific prior written permission.
- 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS 
-IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
-PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
-CONTRIBUTORS BE 
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS 
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN 
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF 
-THE POSSIBILITY OF SUCH DAMAGE.
-```
+The BSD license definition for this project can be viewed [here](https://opensource.org/licenses/BSD-3-Clause)
 
 ## SIP Process
 SIP Process is followed to develop the module. It is detailed in this [link](https://docs.google.com/spreadsheets/d/1iwXafoxuYP-64WJcZ8xOhcCnD-_6G_7DA12rQynheLY/edit#gid=0).
@@ -55,7 +23,9 @@ This program works on a device running Ubuntu 16.04 and ROS Kinetic Kame.
 
 To install ROS Kinetic Kame in Ubuntu 16.04, follow the steps in this [link](http://wiki.ros.org/kinetic/Installation/Ubuntu).
 
-To install catkin, follow the installation steps in this [link](http://wiki.ros.org/catkin).
+To install catkin, follow the installation steps in this [link](http://wiki.ros.org/catkin)
+
+TO install Gazebo, follow the installation steps in this [link](http://gazebosim.org/tutorials?tut=install_ubuntu&ver=7.0)
 
 To install turtlebot_gazebo package can be installed using the following command.
 
@@ -77,12 +47,42 @@ catkin_make
 ```
 
 ## How to run demo
+Before launching the learner and testrun nodes which performs the learning and testing respectively, the current version needs the user to go the QLearning-Navigation package and make the following changes so that the Qtable gets stored at the desired directory and loaded from the desired directory the user wants.
 
+```
+cd ~/catkin_ws/src/QLearning-Navigation-/src
+gedit Qtable.cpp
+```
+In that file go to line 71 and change the path to where you want to store the trained computer in your Qtable.
+
+Close the gedit file.
+
+```
+gedit Test.cpp
+```
+In that file go to line 69 and change the path to where you want to load the Qtable from.
+Note: Absolute path should be mentioned as shown.
+
+Once the necessary changes are made run the following commands to launch the learner node.
+   
 Open a terminal window and run the following command to launch the learner node
 
 ```
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
 roslaunch QLearning-Navigation- learner.launch
 ```
+To view the simulation in Gazebo, open a new terminal window and run the following command
+
+```
+gzclient
+```
+
+This starts the learner node and it starts updating the Qtable. You can the reward obtained for each episode in the terminal window.
+Also, Closing gazebo doesn't close the node.
+Note:You can close the node by pressing Ctrl+C.
+
 To test it in a new environment
 
 ```
@@ -125,6 +125,19 @@ source devel/setup.bash
 rostest Qlearning-Navigation- testQlearnNav.launch
 ```
 ## Known Issues
-In training phase, if you prematurely close the program, press Ctrl+C and you will displayed some random numbers. Should be fixed.
-Also, the real time factor affects the performance the turtlebot both in training and testing phase.
+THe following issues can be fixed in the following versions
+1. In training phase, if you prematurely close the program using Ctrl+C you will displayed some random numbers.
+2. This version requires you to manually change the path in the source file to store and load the Qtable into the nodes. 
 
+The following issue is due to system graphic processing power at the time of running simulation.
+1. The real time factor affects the performance the turtlebot both in training and testing phase. For example, it is possible to change the real_time_update_rate in the .world file to speed up the simulation. But this backfires when the simulation speeds up like (6-12x). The .world file are now to set with real_time_update_rate value of 100 which has been tested in different systems.
+
+## How to generate Doxygen documentation
+
+```
+doxygen ./Doxygen
+```
+## About Me
+Harish Sampathkumar
+Major: Robotics, UMD
+Mail: hsampath@umd.edu
