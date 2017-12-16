@@ -1,0 +1,163 @@
+\hypertarget{testQlearn_8cpp}{}\section{test/test\+Qlearn.cpp File Reference}
+\label{testQlearn_8cpp}\index{test/test\+Qlearn.\+cpp@{test/test\+Qlearn.\+cpp}}
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}Qlearn.\+hpp\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{testQlearn_8cpp_ac26ce04f5221ab7b28a4c333ac0dfe93}{T\+E\+ST} (T\+E\+S\+T\+Suite, test\+Qlearn)
+\begin{DoxyCompactList}\small\item\em testing if the \hyperlink{classQlearn}{Qlearn} works properly \end{DoxyCompactList}\item 
+\hyperlink{testQlearn_8cpp_a6f02c6b6a693d10456141b056550666e}{T\+E\+ST} (T\+E\+S\+T\+Suite, testchoose\+Action)
+\begin{DoxyCompactList}\small\item\em testing if the choos\+Action works properly \end{DoxyCompactList}\item 
+\hyperlink{testQlearn_8cpp_a840de3dff70b79c2a22f259743541880}{T\+E\+ST} (T\+E\+S\+T\+Suite, testchoose\+Next\+Act)
+\begin{DoxyCompactList}\small\item\em testing if the choos\+Next\+Act works properly \end{DoxyCompactList}\item 
+\hyperlink{testQlearn_8cpp_a775e6e738ad82ff709f39bc116609fcc}{T\+E\+ST} (T\+E\+S\+T\+Suite, testupdate\+Qvalue)
+\begin{DoxyCompactList}\small\item\em testing if the update\+Qlvalue works properly \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, test\+Qlearn)}{TEST(TESTSuite, testQlearn)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{test\+Qlearn}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testQlearn_8cpp_ac26ce04f5221ab7b28a4c333ac0dfe93}{}\label{testQlearn_8cpp_ac26ce04f5221ab7b28a4c333ac0dfe93}
+
+
+testing if the \hyperlink{classQlearn}{Qlearn} works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em test\+Qlearn} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+62                             \{
+63   \hyperlink{classQlearn}{Qlearn} learn(0.3, 0.7, 0.1);
+64   EXPECT\_NEAR(0.3, learn.epsilon, 0.01);
+65   EXPECT\_NEAR(0.7, learn.alpha, 0.01);
+66   EXPECT\_NEAR(0.1, learn.discount, 0.01);
+67   EXPECT\_EQ(0, learn.Q[11][1]);
+68   EXPECT\_NE(3, learn.Q[1000][0]);
+69 \}
+\end{DoxyCode}
+\index{test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, testchoose\+Action)}{TEST(TESTSuite, testchooseAction)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{testchoose\+Action}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testQlearn_8cpp_a6f02c6b6a693d10456141b056550666e}{}\label{testQlearn_8cpp_a6f02c6b6a693d10456141b056550666e}
+
+
+testing if the choos\+Action works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em testchoose\+Action} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+79                                   \{
+80   \hyperlink{classQlearn}{Qlearn} learn(0, 0, 0);
+81   learn.Q[154][0] = 1.5;
+82   learn.Q[154][1] = 3.5;
+83   learn.Q[154][2] = 0;
+84   \textcolor{keywordtype}{int} action = learn.chooseAction(154);
+85   EXPECT\_EQ(1, action);
+86   learn.Q[1010][0] = 0;
+87   learn.Q[1010][1] = 0;
+88   learn.Q[1010][2] = 0;
+89   action = learn.chooseAction(1010);
+90   EXPECT\_EQ(0, action);
+91 \}
+\end{DoxyCode}
+\index{test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, testchoose\+Next\+Act)}{TEST(TESTSuite, testchooseNextAct)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{testchoose\+Next\+Act}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testQlearn_8cpp_a840de3dff70b79c2a22f259743541880}{}\label{testQlearn_8cpp_a840de3dff70b79c2a22f259743541880}
+
+
+testing if the choos\+Next\+Act works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em testchoose\+Next\+Act} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+101                                    \{
+102   \hyperlink{classQlearn}{Qlearn} learn(0, 0, 0);
+103   learn.Q[154][0] = 1.5;
+104   learn.Q[154][1] = 3.5;
+105   learn.Q[154][2] = 0;
+106   \textcolor{keywordtype}{int} action = learn.chooseNextAct(154);
+107   EXPECT\_EQ(1, action);
+108   learn.Q[1010][0] = 0;
+109   learn.Q[1010][1] = 0;
+110   learn.Q[1010][2] = 0;
+111   action = learn.chooseNextAct(1010);
+112   EXPECT\_EQ(0, action);
+113 \}
+\end{DoxyCode}
+\index{test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Qlearn.\+cpp@{test\+Qlearn.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, testupdate\+Qvalue)}{TEST(TESTSuite, testupdateQvalue)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{testupdate\+Qvalue}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testQlearn_8cpp_a775e6e738ad82ff709f39bc116609fcc}{}\label{testQlearn_8cpp_a775e6e738ad82ff709f39bc116609fcc}
+
+
+testing if the update\+Qlvalue works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em testupdate\+Qvalue} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+124                                   \{
+125   \hyperlink{classQlearn}{Qlearn} learn(0.9, 0.2, 0.8);
+126   learn.Q[10][0] = 10;
+127   learn.Q[100][0] = 4;
+128   learn.Q[100][1] = 6;
+129   learn.Q[100][2] = 2;
+130   learn.updateQvalue(10, 0, 100, 5);
+131   EXPECT\_NEAR(9.96, learn.Q[10][0], 0.01);
+132 \}
+\end{DoxyCode}

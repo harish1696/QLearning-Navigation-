@@ -1,0 +1,130 @@
+\hypertarget{classEnvironment}{}\section{Environment Class Reference}
+\label{classEnvironment}\index{Environment@{Environment}}
+
+
+{\ttfamily \#include $<$Environment.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classEnvironment_a8b427c4448d8b7536666837521b9e83d}{Environment} ()
+\begin{DoxyCompactList}\small\item\em Constructs a object. \end{DoxyCompactList}\item 
+\hyperlink{classEnvironment_a8e294735187880dd3d59be10c425b29d}{$\sim$\+Environment} ()
+\begin{DoxyCompactList}\small\item\em Destroys a object. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classEnvironment_a5966800e65ed1c300efc07e66c4bdf4a}{reset\+Environment} ()
+\begin{DoxyCompactList}\small\item\em Resets the simulation each time robot crashes. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classEnvironment_a98d209d06f1d484b7f485009e82569cc}{perform\+Act} (int action)
+\begin{DoxyCompactList}\small\item\em Performs the chosen action on the robot. \end{DoxyCompactList}\item 
+int \hyperlink{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}{reward\+Act} (int action)
+\begin{DoxyCompactList}\small\item\em Finds the reward for the performed act. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTurtlebot}{Turtlebot} \hyperlink{classEnvironment_aebe4ef0e6fcd4dc434bf48fc671e10a5}{learner\+Bot}
+\item 
+std\+::vector$<$ int $>$ \hyperlink{classEnvironment_a96b01ffa658eeec4782b40dc852359b0}{curr\+State}
+\item 
+std\+::vector$<$ int $>$ \hyperlink{classEnvironment_a0a6aadc296ea61bf7890c9f6d486ee12}{next\+State}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Environment@{Environment}!Environment@{Environment}}
+\index{Environment@{Environment}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{Environment()}{Environment()}}]{\setlength{\rightskip}{0pt plus 5cm}Environment\+::\+Environment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classEnvironment_a8b427c4448d8b7536666837521b9e83d}{}\label{classEnvironment_a8b427c4448d8b7536666837521b9e83d}
+
+
+Constructs a object. 
+
+\index{Environment@{Environment}!````~Environment@{$\sim$\+Environment}}
+\index{````~Environment@{$\sim$\+Environment}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{$\sim$\+Environment()}{~Environment()}}]{\setlength{\rightskip}{0pt plus 5cm}Environment\+::$\sim$\+Environment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classEnvironment_a8e294735187880dd3d59be10c425b29d}{}\label{classEnvironment_a8e294735187880dd3d59be10c425b29d}
+
+
+Destroys a object. 
+
+
+
+\subsection{Member Function Documentation}
+\index{Environment@{Environment}!perform\+Act@{perform\+Act}}
+\index{perform\+Act@{perform\+Act}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{perform\+Act(int action)}{performAct(int action)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Environment\+::perform\+Act (
+\begin{DoxyParamCaption}
+\item[{int}]{action}
+\end{DoxyParamCaption}
+)}\hypertarget{classEnvironment_a98d209d06f1d484b7f485009e82569cc}{}\label{classEnvironment_a98d209d06f1d484b7f485009e82569cc}
+
+
+Performs the chosen action on the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & to be performed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+state of the robot after it performs action 
+\end{DoxyReturn}
+\index{Environment@{Environment}!reset\+Environment@{reset\+Environment}}
+\index{reset\+Environment@{reset\+Environment}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{reset\+Environment()}{resetEnvironment()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Environment\+::reset\+Environment (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classEnvironment_a5966800e65ed1c300efc07e66c4bdf4a}{}\label{classEnvironment_a5966800e65ed1c300efc07e66c4bdf4a}
+
+
+Resets the simulation each time robot crashes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+initial state of the robot after it respawns 
+\end{DoxyReturn}
+\index{Environment@{Environment}!reward\+Act@{reward\+Act}}
+\index{reward\+Act@{reward\+Act}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{reward\+Act(int action)}{rewardAct(int action)}}]{\setlength{\rightskip}{0pt plus 5cm}int Environment\+::reward\+Act (
+\begin{DoxyParamCaption}
+\item[{int}]{action}
+\end{DoxyParamCaption}
+)}\hypertarget{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}{}\label{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}
+
+
+Finds the reward for the performed act. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & performed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reward obtained 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Environment@{Environment}!curr\+State@{curr\+State}}
+\index{curr\+State@{curr\+State}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{curr\+State}{currState}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Environment\+::curr\+State}\hypertarget{classEnvironment_a96b01ffa658eeec4782b40dc852359b0}{}\label{classEnvironment_a96b01ffa658eeec4782b40dc852359b0}
+\index{Environment@{Environment}!learner\+Bot@{learner\+Bot}}
+\index{learner\+Bot@{learner\+Bot}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{learner\+Bot}{learnerBot}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Turtlebot} Environment\+::learner\+Bot}\hypertarget{classEnvironment_aebe4ef0e6fcd4dc434bf48fc671e10a5}{}\label{classEnvironment_aebe4ef0e6fcd4dc434bf48fc671e10a5}
+\index{Environment@{Environment}!next\+State@{next\+State}}
+\index{next\+State@{next\+State}!Environment@{Environment}}
+\subsubsection[{\texorpdfstring{next\+State}{nextState}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Environment\+::next\+State}\hypertarget{classEnvironment_a0a6aadc296ea61bf7890c9f6d486ee12}{}\label{classEnvironment_a0a6aadc296ea61bf7890c9f6d486ee12}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Environment_8hpp}{Environment.\+hpp}\end{DoxyCompactItemize}

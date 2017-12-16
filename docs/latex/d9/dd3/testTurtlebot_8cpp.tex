@@ -1,0 +1,80 @@
+\hypertarget{testTurtlebot_8cpp}{}\section{test/test\+Turtlebot.cpp File Reference}
+\label{testTurtlebot_8cpp}\index{test/test\+Turtlebot.\+cpp@{test/test\+Turtlebot.\+cpp}}
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$sensor\+\_\+msgs/\+Laser\+Scan.\+h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}Turtlebot.\+hpp\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{testTurtlebot_8cpp_a09d130f861bfecd2a42de9a38837f468}{T\+E\+ST} (T\+E\+S\+T\+Suite, testget\+Qstate)
+\begin{DoxyCompactList}\small\item\em testing if the reward\+Act works properly \end{DoxyCompactList}\item 
+\hyperlink{testTurtlebot_8cpp_a5988a7caf825ae9b14fe89b311daab70}{T\+E\+ST} (T\+E\+S\+T\+Suite, testset\+Done)
+\begin{DoxyCompactList}\small\item\em testing if set\+Done works properly \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{test\+Turtlebot.\+cpp@{test\+Turtlebot.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Turtlebot.\+cpp@{test\+Turtlebot.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, testget\+Qstate)}{TEST(TESTSuite, testgetQstate)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{testget\+Qstate}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testTurtlebot_8cpp_a09d130f861bfecd2a42de9a38837f468}{}\label{testTurtlebot_8cpp_a09d130f861bfecd2a42de9a38837f468}
+
+
+testing if the reward\+Act works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em testget\+Qstate} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+63                                \{
+64   \hyperlink{classTurtlebot}{Turtlebot} testbot;
+65   std::vector<int> state = testbot.\hyperlink{classTurtlebot_a768985a081626ef533c4299607ac403d}{getQstate}();
+66   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < state.size(); i++) \{
+67      EXPECT\_EQ(state[i], 0);
+68   \}
+69 \}
+\end{DoxyCode}
+\index{test\+Turtlebot.\+cpp@{test\+Turtlebot.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Turtlebot.\+cpp@{test\+Turtlebot.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, testset\+Done)}{TEST(TESTSuite, testsetDone)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{testset\+Done}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testTurtlebot_8cpp_a5988a7caf825ae9b14fe89b311daab70}{}\label{testTurtlebot_8cpp_a5988a7caf825ae9b14fe89b311daab70}
+
+
+testing if set\+Done works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em testset\+Done} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+79                              \{
+80   \hyperlink{classTurtlebot}{Turtlebot} testbot;
+81   testbot.\hyperlink{classTurtlebot_ab9129bd2a957b71b10ad5fb49111b7c6}{setDone}();
+82   \textcolor{keywordtype}{bool} done = testbot.\hyperlink{classTurtlebot_a2803edf58b44bffa08c100b8d54ad25e}{isDone}();
+83   EXPECT\_FALSE(done);
+84 \}
+\end{DoxyCode}

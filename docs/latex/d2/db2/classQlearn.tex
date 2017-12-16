@@ -1,0 +1,140 @@
+\hypertarget{classQlearn}{}\section{Qlearn Class Reference}
+\label{classQlearn}\index{Qlearn@{Qlearn}}
+
+
+{\ttfamily \#include $<$Qlearn.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classQlearn_aa488d216e899910cc71cfb5bf77674bc}{Qlearn} (float e, float a, float d)
+\begin{DoxyCompactList}\small\item\em Constructs a object. \end{DoxyCompactList}\item 
+\hyperlink{classQlearn_a8e2e2695b75f390e76b7d72faeac2a41}{$\sim$\+Qlearn} ()
+\begin{DoxyCompactList}\small\item\em Destroys a object. \end{DoxyCompactList}\item 
+int \hyperlink{classQlearn_a40c1b070fe8df6cebc2091362a164855}{choose\+Action} (int state)
+\begin{DoxyCompactList}\small\item\em Finds the action that the bot can perform. \end{DoxyCompactList}\item 
+int \hyperlink{classQlearn_ac380d33ee8246cb23e9be75acfa699a9}{choose\+Next\+Act} (int nextstate)
+\begin{DoxyCompactList}\small\item\em Fetches the best possible action for the resultant state. \end{DoxyCompactList}\item 
+void \hyperlink{classQlearn_a09430681d1764d3e9de028651ab2f7d7}{update\+Qvalue} (int currstate, int action, int nextstate, int reward)
+\begin{DoxyCompactList}\small\item\em Updates the Qvalue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classQlearn_a6a70fe527dd3ab0a3f4245ab5437021e}{epsilon}
+\item 
+double \hyperlink{classQlearn_afea088cbb6979c88aebe6a686d5cb0a7}{alpha}
+\item 
+double \hyperlink{classQlearn_aae7a6f1900f66914f090e81263fa9d5e}{discount}
+\item 
+std\+::vector$<$ std\+::vector$<$ double $>$ $>$ \hyperlink{classQlearn_aca968a8057ef5deed1436e09436f197b}{Q}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Qlearn@{Qlearn}!Qlearn@{Qlearn}}
+\index{Qlearn@{Qlearn}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{Qlearn(float e, float a, float d)}{Qlearn(float e, float a, float d)}}]{\setlength{\rightskip}{0pt plus 5cm}Qlearn\+::\+Qlearn (
+\begin{DoxyParamCaption}
+\item[{float}]{e, }
+\item[{float}]{a, }
+\item[{float}]{d}
+\end{DoxyParamCaption}
+)}\hypertarget{classQlearn_aa488d216e899910cc71cfb5bf77674bc}{}\label{classQlearn_aa488d216e899910cc71cfb5bf77674bc}
+
+
+Constructs a object. 
+
+\index{Qlearn@{Qlearn}!````~Qlearn@{$\sim$\+Qlearn}}
+\index{````~Qlearn@{$\sim$\+Qlearn}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{$\sim$\+Qlearn()}{~Qlearn()}}]{\setlength{\rightskip}{0pt plus 5cm}Qlearn\+::$\sim$\+Qlearn (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classQlearn_a8e2e2695b75f390e76b7d72faeac2a41}{}\label{classQlearn_a8e2e2695b75f390e76b7d72faeac2a41}
+
+
+Destroys a object. 
+
+
+
+\subsection{Member Function Documentation}
+\index{Qlearn@{Qlearn}!choose\+Action@{choose\+Action}}
+\index{choose\+Action@{choose\+Action}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{choose\+Action(int state)}{chooseAction(int state)}}]{\setlength{\rightskip}{0pt plus 5cm}int Qlearn\+::choose\+Action (
+\begin{DoxyParamCaption}
+\item[{int}]{state}
+\end{DoxyParamCaption}
+)}\hypertarget{classQlearn_a40c1b070fe8df6cebc2091362a164855}{}\label{classQlearn_a40c1b070fe8df6cebc2091362a164855}
+
+
+Finds the action that the bot can perform. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current} & state of the robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+action 
+\end{DoxyReturn}
+\index{Qlearn@{Qlearn}!choose\+Next\+Act@{choose\+Next\+Act}}
+\index{choose\+Next\+Act@{choose\+Next\+Act}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{choose\+Next\+Act(int nextstate)}{chooseNextAct(int nextstate)}}]{\setlength{\rightskip}{0pt plus 5cm}int Qlearn\+::choose\+Next\+Act (
+\begin{DoxyParamCaption}
+\item[{int}]{nextstate}
+\end{DoxyParamCaption}
+)}\hypertarget{classQlearn_ac380d33ee8246cb23e9be75acfa699a9}{}\label{classQlearn_ac380d33ee8246cb23e9be75acfa699a9}
+
+
+Fetches the best possible action for the resultant state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resultant} & state of the turtlebot after a action is performed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+action 
+\end{DoxyReturn}
+\index{Qlearn@{Qlearn}!update\+Qvalue@{update\+Qvalue}}
+\index{update\+Qvalue@{update\+Qvalue}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{update\+Qvalue(int currstate, int action, int nextstate, int reward)}{updateQvalue(int currstate, int action, int nextstate, int reward)}}]{\setlength{\rightskip}{0pt plus 5cm}void Qlearn\+::update\+Qvalue (
+\begin{DoxyParamCaption}
+\item[{int}]{currstate, }
+\item[{int}]{action, }
+\item[{int}]{nextstate, }
+\item[{int}]{reward}
+\end{DoxyParamCaption}
+)}\hypertarget{classQlearn_a09430681d1764d3e9de028651ab2f7d7}{}\label{classQlearn_a09430681d1764d3e9de028651ab2f7d7}
+
+
+Updates the Qvalue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current} & state of the robot, action performed, resultant state of the robot and the reward for the action taken \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\index{Qlearn@{Qlearn}!alpha@{alpha}}
+\index{alpha@{alpha}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{alpha}{alpha}}]{\setlength{\rightskip}{0pt plus 5cm}double Qlearn\+::alpha}\hypertarget{classQlearn_afea088cbb6979c88aebe6a686d5cb0a7}{}\label{classQlearn_afea088cbb6979c88aebe6a686d5cb0a7}
+\index{Qlearn@{Qlearn}!discount@{discount}}
+\index{discount@{discount}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{discount}{discount}}]{\setlength{\rightskip}{0pt plus 5cm}double Qlearn\+::discount}\hypertarget{classQlearn_aae7a6f1900f66914f090e81263fa9d5e}{}\label{classQlearn_aae7a6f1900f66914f090e81263fa9d5e}
+\index{Qlearn@{Qlearn}!epsilon@{epsilon}}
+\index{epsilon@{epsilon}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{epsilon}{epsilon}}]{\setlength{\rightskip}{0pt plus 5cm}double Qlearn\+::epsilon}\hypertarget{classQlearn_a6a70fe527dd3ab0a3f4245ab5437021e}{}\label{classQlearn_a6a70fe527dd3ab0a3f4245ab5437021e}
+\index{Qlearn@{Qlearn}!Q@{Q}}
+\index{Q@{Q}!Qlearn@{Qlearn}}
+\subsubsection[{\texorpdfstring{Q}{Q}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::vector$<$double$>$ $>$ Qlearn\+::Q}\hypertarget{classQlearn_aca968a8057ef5deed1436e09436f197b}{}\label{classQlearn_aca968a8057ef5deed1436e09436f197b}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Qlearn_8hpp}{Qlearn.\+hpp}\end{DoxyCompactItemize}

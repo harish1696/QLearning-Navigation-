@@ -1,0 +1,151 @@
+\hypertarget{classTurtlebot}{}\section{Turtlebot Class Reference}
+\label{classTurtlebot}\index{Turtlebot@{Turtlebot}}
+
+
+{\ttfamily \#include $<$Turtlebot.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTurtlebot_a683061fc512bfb8d2a35134e783767ff}{Turtlebot} ()
+\begin{DoxyCompactList}\small\item\em Constructs a object. \end{DoxyCompactList}\item 
+\hyperlink{classTurtlebot_a86b905efdcfab4dc1d4c9f7687902f94}{$\sim$\+Turtlebot} ()
+\begin{DoxyCompactList}\small\item\em Destroys a object. \end{DoxyCompactList}\item 
+void \hyperlink{classTurtlebot_ad30b1bbb44e8cc9d9d7f051beb4c4f98}{get\+Sensor\+Data} (const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&msg)
+\begin{DoxyCompactList}\small\item\em Callback function for topic /scan. \end{DoxyCompactList}\item 
+void \hyperlink{classTurtlebot_ac0ea0124b063cbc0ba8343896c17fb17}{publish\+Velocity} (int action)
+\begin{DoxyCompactList}\small\item\em Publishes velocity to the robot. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \hyperlink{classTurtlebot_a768985a081626ef533c4299607ac403d}{get\+Qstate} ()
+\begin{DoxyCompactList}\small\item\em obtains the state of the robot \end{DoxyCompactList}\item 
+bool \hyperlink{classTurtlebot_a2803edf58b44bffa08c100b8d54ad25e}{is\+Done} ()
+\begin{DoxyCompactList}\small\item\em checks if the robot crashes \end{DoxyCompactList}\item 
+void \hyperlink{classTurtlebot_ab9129bd2a957b71b10ad5fb49111b7c6}{set\+Done} ()
+\begin{DoxyCompactList}\small\item\em sets the Done variable to False \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Turtlebot@{Turtlebot}!Turtlebot@{Turtlebot}}
+\index{Turtlebot@{Turtlebot}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{Turtlebot()}{Turtlebot()}}]{\setlength{\rightskip}{0pt plus 5cm}Turtlebot\+::\+Turtlebot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_a683061fc512bfb8d2a35134e783767ff}{}\label{classTurtlebot_a683061fc512bfb8d2a35134e783767ff}
+
+
+Constructs a object. 
+
+\index{Turtlebot@{Turtlebot}!````~Turtlebot@{$\sim$\+Turtlebot}}
+\index{````~Turtlebot@{$\sim$\+Turtlebot}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{$\sim$\+Turtlebot()}{~Turtlebot()}}]{\setlength{\rightskip}{0pt plus 5cm}Turtlebot\+::$\sim$\+Turtlebot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_a86b905efdcfab4dc1d4c9f7687902f94}{}\label{classTurtlebot_a86b905efdcfab4dc1d4c9f7687902f94}
+
+
+Destroys a object. 
+
+
+
+\subsection{Member Function Documentation}
+\index{Turtlebot@{Turtlebot}!get\+Qstate@{get\+Qstate}}
+\index{get\+Qstate@{get\+Qstate}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{get\+Qstate()}{getQstate()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Turtlebot\+::get\+Qstate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_a768985a081626ef533c4299607ac403d}{}\label{classTurtlebot_a768985a081626ef533c4299607ac403d}
+
+
+obtains the state of the robot 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+state in vector form 
+\end{DoxyReturn}
+\index{Turtlebot@{Turtlebot}!get\+Sensor\+Data@{get\+Sensor\+Data}}
+\index{get\+Sensor\+Data@{get\+Sensor\+Data}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{get\+Sensor\+Data(const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&msg)}{getSensorData(const sensor_msgs::LaserScan::ConstPtr &msg)}}]{\setlength{\rightskip}{0pt plus 5cm}void Turtlebot\+::get\+Sensor\+Data (
+\begin{DoxyParamCaption}
+\item[{const sensor\+\_\+msgs\+::\+Laser\+Scan\+::\+Const\+Ptr \&}]{msg}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_ad30b1bbb44e8cc9d9d7f051beb4c4f98}{}\label{classTurtlebot_ad30b1bbb44e8cc9d9d7f051beb4c4f98}
+
+
+Callback function for topic /scan. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Laser\+Scan} & data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Turtlebot@{Turtlebot}!is\+Done@{is\+Done}}
+\index{is\+Done@{is\+Done}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{is\+Done()}{isDone()}}]{\setlength{\rightskip}{0pt plus 5cm}bool Turtlebot\+::is\+Done (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_a2803edf58b44bffa08c100b8d54ad25e}{}\label{classTurtlebot_a2803edf58b44bffa08c100b8d54ad25e}
+
+
+checks if the robot crashes 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if robot crashes, otherwise false 
+\end{DoxyReturn}
+\index{Turtlebot@{Turtlebot}!publish\+Velocity@{publish\+Velocity}}
+\index{publish\+Velocity@{publish\+Velocity}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{publish\+Velocity(int action)}{publishVelocity(int action)}}]{\setlength{\rightskip}{0pt plus 5cm}void Turtlebot\+::publish\+Velocity (
+\begin{DoxyParamCaption}
+\item[{int}]{action}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_ac0ea0124b063cbc0ba8343896c17fb17}{}\label{classTurtlebot_ac0ea0124b063cbc0ba8343896c17fb17}
+
+
+Publishes velocity to the robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & to be performed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\index{Turtlebot@{Turtlebot}!set\+Done@{set\+Done}}
+\index{set\+Done@{set\+Done}!Turtlebot@{Turtlebot}}
+\subsubsection[{\texorpdfstring{set\+Done()}{setDone()}}]{\setlength{\rightskip}{0pt plus 5cm}void Turtlebot\+::set\+Done (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classTurtlebot_ab9129bd2a957b71b10ad5fb49111b7c6}{}\label{classTurtlebot_ab9129bd2a957b71b10ad5fb49111b7c6}
+
+
+sets the Done variable to False 
+
+
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{Turtlebot_8hpp}{Turtlebot.\+hpp}\end{DoxyCompactItemize}

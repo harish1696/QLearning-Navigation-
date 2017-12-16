@@ -1,0 +1,57 @@
+\hypertarget{testEnvironment_8cpp}{}\section{test/test\+Environment.cpp File Reference}
+\label{testEnvironment_8cpp}\index{test/test\+Environment.\+cpp@{test/test\+Environment.\+cpp}}
+{\ttfamily \#include $<$ros/ros.\+h$>$}\\*
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$sensor\+\_\+msgs/\+Laser\+Scan.\+h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}Environment.\+hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Turtlebot.\+hpp\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{testEnvironment_8cpp_ac8356b963fc2b9451ab0eb78bef66426}{T\+E\+ST} (T\+E\+S\+T\+Suite, testreward\+Act)
+\begin{DoxyCompactList}\small\item\em testing if the reward\+Act works properly \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{test\+Environment.\+cpp@{test\+Environment.\+cpp}!T\+E\+ST@{T\+E\+ST}}
+\index{T\+E\+ST@{T\+E\+ST}!test\+Environment.\+cpp@{test\+Environment.\+cpp}}
+\subsubsection[{\texorpdfstring{T\+E\+S\+T(\+T\+E\+S\+T\+Suite, testreward\+Act)}{TEST(TESTSuite, testrewardAct)}}]{\setlength{\rightskip}{0pt plus 5cm}T\+E\+ST (
+\begin{DoxyParamCaption}
+\item[{T\+E\+S\+T\+Suite}]{, }
+\item[{testreward\+Act}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{testEnvironment_8cpp_ac8356b963fc2b9451ab0eb78bef66426}{}\label{testEnvironment_8cpp_ac8356b963fc2b9451ab0eb78bef66426}
+
+
+testing if the reward\+Act works properly 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em T\+E\+S\+T\+Suite} & \\
+\hline
+\mbox{\tt in}  & {\em testreward\+Act} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+\begin{DoxyCode}
+63                                \{
+64   \hyperlink{classEnvironment}{Environment} agent;
+65   \textcolor{keywordtype}{int} action = 0;
+66   \textcolor{keywordtype}{int} reward = agent.\hyperlink{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}{rewardAct}(action);
+67   EXPECT\_EQ(5, reward);
+68   action = 1;
+69   reward = agent.\hyperlink{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}{rewardAct}(action);
+70   EXPECT\_EQ(1, reward);
+71   action = 2;
+72   reward = agent.\hyperlink{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}{rewardAct}(action);
+73   EXPECT\_EQ(1, reward);
+74   agent.\hyperlink{classEnvironment_aebe4ef0e6fcd4dc434bf48fc671e10a5}{learnerBot}.\hyperlink{classTurtlebot_ab9129bd2a957b71b10ad5fb49111b7c6}{setDone}();
+75   action = 0;
+76   reward = agent.\hyperlink{classEnvironment_a4f00dff5955ba6b6608181a3f053e9bb}{rewardAct}(action);
+77   EXPECT\_NE(-200, reward);
+78 \}
+\end{DoxyCode}
