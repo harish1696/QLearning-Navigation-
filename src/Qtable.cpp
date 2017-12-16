@@ -67,6 +67,7 @@ int Qtable::vecToint(std::vector<int>state) {
 void Qtable::convertTocsv(std::vector<std::vector<double>> Q) {
   typedef std::vector<int>::size_type vec_size;
   std::ofstream output;
+  // replace the path below to where you want the Qtable stored
   output.open("/home/harish/catkin_final/Lookuptable.csv");
   vec_size Qsize = Q.size();
   for (unsigned int i = 0; i < Qsize; i++) {

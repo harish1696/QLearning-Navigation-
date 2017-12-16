@@ -107,7 +107,7 @@ int main(int argc, char **argv) {
         table.convertTocsv(learn.Q);
       }
     }
-    std::cout << "E: " << learn.epsilon <<  "Episodes: " << i << " "
+    std::cout << "E: " << learn.epsilon << " " <<  "Episodes: " << i << " "
               << "Iterations: " << j << " " << "Cumulative Reward: "
               << cumulativeReward << std::endl;
   }

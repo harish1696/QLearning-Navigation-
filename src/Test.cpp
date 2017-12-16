@@ -65,7 +65,8 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "testrun");
 
   std::ifstream lookuptable;
-  lookuptable.open("/home/harish/catkin_final/Qtable500.csv");
+  // replace the following path with the path to your Qtable
+  lookuptable.open("/home/harish/catkin_final/Lookuptable.csv");
   std::vector<std::vector<double>> Q;
   std::string row, column;
   while (std::getline(lookuptable, row)) {
@@ -75,13 +76,8 @@ int main(int argc, char **argv) {
       std::stringstream temp1(column);
       double val;
       temp1 >> val;
-      std::cout << val << " ";
       temp.push_back(val);
     }
-    for (unsigned int i = 0; i < temp.size(); i++) {
-      std::cout << temp[i] << " ";
-    }
-    std::cout << std::endl;
     Q.push_back(temp);
   }
 
@@ -97,8 +93,6 @@ int main(int argc, char **argv) {
   int currstate = table.vecToint(currState);
 
   while (ros::ok()) {
-    currstate = table.vecToint(currState);
-
     int action = test.chooseNextAct(currstate);
 
     int reward = agent.rewardAct(action);
