@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
   ros::init(argc, argv, "testrun");
 
   std::ifstream lookuptable;
-  lookuptable.open("/home/harish/catkin_final/final.csv");
+  lookuptable.open("/home/harish/catkin_final/Qtable500.csv");
   std::vector<std::vector<double>> Q;
   std::string row, column;
   while (std::getline(lookuptable, row)) {
@@ -86,7 +86,9 @@ int main(int argc, char **argv) {
   }
 
   Environment agent;
-  Qlearn test(Q);
+  Qlearn test(0, 0, 0);
+  test.Q = Q;
+
   Qtable table;
 
   ros::Rate loop_rate(10);
@@ -114,7 +116,6 @@ int main(int argc, char **argv) {
 
     ros::spinOnce();
   }
-  table.convertTocsv(test.Q);
   return 0;
 }
 

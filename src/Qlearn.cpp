@@ -65,13 +65,6 @@ Qlearn::Qlearn(float e, float a, float d) {
   }
 }
 
-Qlearn::Qlearn(std::vector<std::vector<double>> Qin) {
-  epsilon = 0.0;
-  alpha = 0.0;
-  discount = 0.0;
-  Q = Qin;
-}
-
 // Destroys a object
 Qlearn::~Qlearn() {}
 

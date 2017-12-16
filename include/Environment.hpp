@@ -87,13 +87,13 @@ class Environment {
  */
   int rewardAct(int action);
 
-  Turtlebot learnerBot; // robot in the environemnt
-  std::vector<int> currState; // state of the robot before action
-  std::vector<int> nextState; // state of the robot after action
+  Turtlebot learnerBot;  // robot in the environemnt
+  std::vector<int> currState;  // state of the robot before action
+  std::vector<int> nextState;  // state of the robot after action
 
  private:
   ros::NodeHandle n;
-  ros::Subscriber botSensor; // collects the scan data
+  ros::Subscriber botSensor;  // collects the scan data
 };
 
 #endif  // INCLUDE_ENVIRONMENT_HPP_

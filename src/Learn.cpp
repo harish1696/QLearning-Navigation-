@@ -61,20 +61,20 @@
 int main(int argc, char **argv) {
   // initializing a ros node called learner
   ros::init(argc, argv, "learner");
-
   Environment agent;
 
   Qlearn learn(0.9, 0.2, 0.8);
+
   double discount = 0.9986;
 
   Qtable table;
 
-  int maxEpisodes = 3000;
+  int maxEpisodes = 5;
   int maxIterations = 1000;
 
   ros::Rate loop_rate(10);
-  
-  while(ros::ok()) {
+
+  while (ros::ok()) {
   for (int i = 0; i < maxEpisodes; i++) {
     int cumulativeReward = 0;
     std::vector<int> currState = agent.resetEnvironment();

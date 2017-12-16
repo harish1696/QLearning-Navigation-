@@ -58,7 +58,6 @@
 
 // constructor of walker object
 Turtlebot::Turtlebot() {
-  state = {0, 0, 0, 0};
   done = false;
   velocity = n.advertise<geometry_msgs::Twist>
                              ("/mobile_base/commands/velocity", 1000);
@@ -71,12 +70,11 @@ void Turtlebot::getSensorData(const sensor_msgs::LaserScan::ConstPtr& msg) {
   int mod = msg->ranges.size()/4;
   int k = 0;
   for (int i = 0; i < msg->ranges.size(); ++i) {
-    if (msg->ranges[i] < 0.6) {
+    if (msg->ranges[i] < 0.5) {
       done = true;
       return;
     }
     if (i%mod == 0) {
-      // ROS_INFO_STREAM(msg->ranges[i]);
       if (msg->ranges[i] >= 5) {
         state[k] = 5;
       } else if (std::isnan(msg->ranges[i])) {
@@ -107,15 +105,15 @@ void Turtlebot::publishVelocity(int action) {
     msg.angular.z = 0.0;
 
     if (action == 0) {
-      msg.linear.x = 0.2;
+      msg.linear.x = 0.3;
     }
     if (action == 1) {
       msg.linear.x = 0.05;
-      msg.angular.z = 0.3;
+      msg.angular.z = 0.5;
     }
     if (action == 2) {
       msg.linear.x = 0.05;
-      msg.angular.z = -0.3;
+      msg.angular.z = -0.5;
     }
 
   velocity.publish(msg);

@@ -62,11 +62,6 @@ class Qlearn {
   Qlearn(float e, float a, float d);
 
 /**
- * @brief Overloaded Constructor for loading trained Qtable
- */
-  explicit Qlearn(std::vector<std::vector<double>> Qin);
-
-/**
  * @brief Destroys a object
  */
   ~Qlearn();
@@ -98,7 +93,7 @@ class Qlearn {
   double epsilon;
   double alpha;
   double discount;
-  std::vector<std::vector<double>> Q; //Qtable
+  std::vector<std::vector<double>> Q;  // Qtable
 
  private:
 /**

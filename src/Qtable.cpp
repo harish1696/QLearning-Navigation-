@@ -52,7 +52,9 @@
 #include <vector>
 #include "Qtable.hpp"
 
-Qtable::Qtable() {}
+Qtable::Qtable() {
+  index = 0;
+}
 
 Qtable::~Qtable() {}
 
@@ -65,11 +67,11 @@ int Qtable::vecToint(std::vector<int>state) {
 void Qtable::convertTocsv(std::vector<std::vector<double>> Q) {
   typedef std::vector<int>::size_type vec_size;
   std::ofstream output;
-  output.open("/home/harish/catkin_final/Lookuptable1.csv");
-  output << "State, Forward, Left, Right" << std::endl;
+  output.open("/home/harish/catkin_final/Lookuptable.csv");
   vec_size Qsize = Q.size();
   for (unsigned int i = 0; i < Qsize; i++) {
-      output << i << "," << Q[i][0] << "," << Q[i][1] << "," << Q[i][2] << std::endl;
+      output << Q[i][0] << "," << Q[i][1]
+                  << "," << Q[i][2] << std::endl;
   }
 }
 

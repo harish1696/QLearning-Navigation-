@@ -80,7 +80,7 @@ class Qtable {
   void convertTocsv(std::vector<std::vector<double>> Q);
 
  private:
-  int index; // index of a state
+  int index;  // index of a state
 };
 
 #endif  // INCLUDE_QTABLE_HPP_

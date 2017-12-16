@@ -102,10 +102,10 @@ class Turtlebot {
   void setDone();
 
  private:
-  std::vector<int> state; // holds state of the robot
-  bool done; // true if robot crashes else false
-  ros::NodeHandle n; 
-  ros::Publisher velocity; // publish velocity to robot
+  std::vector<int> state = {0, 0, 0, 0};  // holds state of the robot
+  bool done;  // true if robot crashes else false
+  ros::NodeHandle n;
+  ros::Publisher velocity;  // publish velocity to robot
 };
 
 #endif  // INCLUDE_TURTLEBOT_HPP_
