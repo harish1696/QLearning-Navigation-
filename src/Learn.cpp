@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
 
   Qtable table;
 
-  int maxEpisodes = 5;
+  int maxEpisodes = 2500;
   int maxIterations = 1000;
 
   ros::Rate loop_rate(10);
