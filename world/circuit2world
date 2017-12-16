@@ -72,7 +72,7 @@
     <physics name='default_physics' default='0' type='ode'>
       <max_step_size>0.01</max_step_size>
       <real_time_factor>1</real_time_factor>
-      <real_time_update_rate>0</real_time_update_rate>
+      <real_time_update_rate>100</real_time_update_rate>
     </physics>
     <state world_name='default'>
       <sim_time>315 990000000</sim_time>
